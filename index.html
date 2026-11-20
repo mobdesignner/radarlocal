@@ -317,6 +317,15 @@ a{color:#cdf464}a:hover{opacity:.92}
  .bars{height:170px}
 }
 </style>
+<!-- Meta Pixel (Infoprodutos) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','2251055162476183');
+fbq('track','PageView');
+fbq('track','ViewContent',{content_name:'Radar Local',content_category:'radar',value:87,currency:'BRL'});
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.buy');if(a){fbq('track','InitiateCheckout',{content_name:'Radar Local',value:87,currency:'BRL'});}},true);
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2251055162476183&ev=PageView&noscript=1"/></noscript>
 </head>
 <body>
 <div style="background: #0a0b0f; color: #eef0f4; font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.55; overflow-x: clip">
@@ -541,7 +550,7 @@ a{color:#cdf464}a:hover{opacity:.92}
 <script>
 // COLE AQUI o link do checkout da Cakto:
 var CHECKOUT = "https://pay.cakto.com.br/n5sqxui_1348794";
-document.querySelectorAll('a.buy').forEach(function(a){a.href=CHECKOUT});
+var _q=location.search?location.search:'';document.querySelectorAll('a.buy').forEach(function(a){a.href=CHECKOUT+_q});
 function fmt(v){return 'R$ '+v.toLocaleString('pt-BR')}
 function calc(n){document.getElementById('entrada').textContent=fmt(n*197);document.getElementById('rec1').textContent=fmt(n*97);document.getElementById('rec12').textContent=fmt(n*12*97);
 document.querySelectorAll('.opt').forEach(function(b){b.classList.toggle('on',+b.dataset.n===n)})}
