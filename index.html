@@ -289,6 +289,33 @@ a{color:#cdf464}a:hover{opacity:.92}
  .stick b{font-size:20px}.stick span{font-size:11.5px}
  .stick a{padding:12px 18px!important;border-radius:12px}
 }
+
+/* ---- carrossel de recursos no celular ---- */
+.fcar{display:none}
+@media(max-width:760px){
+ .feat{display:none!important}
+ .fcar{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -24px;padding:4px 24px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .fcar::-webkit-scrollbar{display:none}
+ .fcard{flex:0 0 76%;scroll-snap-align:center;background:#111318;border:1px solid #1f232b;border-radius:22px;overflow:hidden;display:flex;flex-direction:column}
+ .fcard .fi{height:250px;overflow:hidden;background:radial-gradient(70% 70% at 50% 30%,rgba(205,244,100,.12),transparent 70%),#0b0d11;display:flex;justify-content:center;padding-top:16px}
+ .fcard .fi img{width:62%;height:auto;align-self:flex-start;border-radius:22px 22px 0 0;border:5px solid #1d2027;border-bottom:0}
+ .fcard .fi:has(img.w){justify-content:flex-start;padding-left:14px}.fcard .fi img.w{width:170%;max-width:none;border-radius:12px;border:1px solid #2b3039}
+ .fcard .ft{padding:14px 16px 16px}
+ .fcard .ft b{display:flex;align-items:center;gap:8px;font-size:15.5px;color:#eef0f4}
+ .fcard .ft b i{width:24px;height:24px;border-radius:8px;background:#cdf464;color:#141a00;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+ .fcard .ft p{margin:6px 0 0;color:#a9afba;font-size:13.5px;line-height:1.45}
+ .fdots{display:flex;justify-content:center;gap:6px;margin-top:12px}
+ .fdots i{width:6px;height:6px;border-radius:99px;background:#2b3039;transition:all .3s}
+ .fdots i.on{width:20px;background:#cdf464}
+ .fhint{text-align:center;color:#6b717c;font-size:12px;margin-top:8px}
+ /* economia mais compacta */
+ .econ2{margin-top:14px;padding:16px 16px 14px;border-radius:18px}
+ .econ2 .l{font-size:11px}
+ .econ2 .n{font-size:clamp(32px,10vw,40px)!important;margin:4px 0 2px}
+ .econ2 .s{font-size:12.5px!important}
+ .econ2 .row2{display:none}
+ .bars{height:170px}
+}
 </style>
 </head>
 <body>
@@ -602,5 +629,12 @@ new IntersectionObserver(function(e){precoIn=e[0].isIntersecting;upd()},{thresho
  f.addEventListener('mouseenter',function(){f.classList.add('pause');clearTimeout(tm)});f.addEventListener('mouseleave',function(){f.classList.remove('pause');go(cur)});
  go(0)})();
 </script>
-</body>
+<script>(function(){if(!matchMedia('(max-width:760px)').matches)return;var f=document.getElementById('feat');if(!f)return;
+var tabs=f.querySelectorAll('.ftab'),ims=f.querySelectorAll('.fstage img'),c=document.createElement('div');c.className='fcar';
+tabs.forEach(function(t,k){var im=ims[k],b=t.querySelector('b').cloneNode(true),d=t.querySelector('span').textContent,card=document.createElement('div');card.className='fcard';
+var w=im.classList.contains('fdk');card.innerHTML='<div class="fi"><img alt="" class="'+(w?'w':'')+'" src="'+im.src+'"></div><div class="ft"></div>';var ft=card.querySelector('.ft');ft.appendChild(b);var p=document.createElement('p');p.textContent=d;ft.appendChild(p);c.appendChild(card)});
+var dots=document.createElement('div');dots.className='fdots';tabs.forEach(function(_,k){var i=document.createElement('i');if(!k)i.className='on';dots.appendChild(i)});
+var h=document.createElement('div');h.className='fhint';h.textContent='Arraste pro lado para ver mais →';
+f.parentNode.insertBefore(c,f.nextSibling);c.parentNode.insertBefore(dots,c.nextSibling);dots.parentNode.insertBefore(h,dots.nextSibling);
+c.addEventListener('scroll',function(){var w=c.firstChild.offsetWidth+12,k=Math.round(c.scrollLeft/w);[].forEach.call(dots.children,function(d,j){d.classList.toggle('on',j===k)})},{passive:true})})();</script></body>
 </html>
