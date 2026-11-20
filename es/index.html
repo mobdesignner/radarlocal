@@ -162,7 +162,7 @@ a{color:#cdf464}a:hover{opacity:.92}
  .stick a{padding:13px 18px!important}
  .final{padding:34px 20px!important}
 }
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.ph1,.ph2{animation-duration:12s!important}}
 
 
 </style>
@@ -441,7 +441,7 @@ var NI=[
  {q:'clínica de estética',l:[['Bella Piel Estética','★ 3,9 · 40 reseñas',85],['Studio Renova','★ 4,2 · 8 reseñas · sin web',90],['Espacio Lumi','★ 4,8 · 18 reseñas',72],['Clínica Rostro Bien','★ 4,6 · 210 reseñas',40],['Estética Viva','★ 3,7 · 5 reseñas · sin web',97],['Glow Studio','★ 4,4 · 12 reseñas · solo Instagram',83]]}
 ];
 var dq=document.getElementById('dq'),feed=document.getElementById('feed'),bl=document.getElementById('blips'),dn=document.getElementById('dn'),dh=document.getElementById('dh');
-if(!dq)return;var T=[],cur=0,red=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!dq)return;var T=[],cur=0,red=false;
 function later(f,ms){T.push(setTimeout(f,ms))}
 function ini(n){return n.replace(/^(Dr\.|Clínica|Studio|Espacio)\s/,'').split(' ').slice(0,2).map(function(w){return w[0]}).join('').toUpperCase()}
 function run(n){T.forEach(clearTimeout);T=[];cur=n;var d=NI[n];dq.textContent='';feed.innerHTML='';bl.innerHTML='';dn.textContent='0';dh.textContent='0';
