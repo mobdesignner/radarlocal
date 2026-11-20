@@ -248,6 +248,20 @@ a{color:#cdf464}a:hover{opacity:.92}
  .pain p{font-size:16px}
 }
 @media(max-width:760px){.herovis{order:3!important}.hsub{order:4!important}.mstrip{order:5!important}.hcta{order:6!important}.selos{order:7!important}}
+
+.gains{list-style:none;margin:22px 0 0;padding:18px 20px;display:grid;gap:12px;background:rgba(205,244,100,.06);border:1px solid rgba(205,244,100,.25);border-radius:18px}
+.gains .gt{font-size:12.5px;font-weight:700;letter-spacing:.1em;color:#cdf464;text-transform:uppercase}
+.gains li{display:flex;align-items:center;gap:12px;font-size:16px;color:#eef0f4;font-weight:500}
+.gains li i{width:24px;height:24px;border-radius:8px;background:#cdf464;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.econ2{margin-top:18px;position:relative;overflow:hidden;background:radial-gradient(120% 140% at 0% 0%,#e4ff8a,#cdf464 45%,#a9cf3a);color:#141a00;border-radius:20px;padding:22px 22px 18px;box-shadow:0 20px 60px rgba(205,244,100,.25),inset 0 1px 0 rgba(255,255,255,.5)}
+.econ2:after{content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:shine 4.5s ease-in-out infinite}
+.econ2 .l{font-size:12.5px;font-weight:800;letter-spacing:.14em;opacity:.75}
+.econ2 .n{display:block;font:700 clamp(44px,5.6vw,64px)/1 'Space Grotesk',Inter,sans-serif;letter-spacing:-.03em;margin:6px 0 4px;font-variant-numeric:tabular-nums}
+.econ2 .s{font-size:14px;font-weight:600;opacity:.8}
+.econ2 .row2{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.econ2 .row2 span{background:rgba(20,26,0,.1);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600}
+.econ2 .row2 b{font-variant-numeric:tabular-nums}
+.econ2 .n{white-space:nowrap}@media(max-width:760px){.econ2 .n{font-size:clamp(34px,11vw,46px)}.gains li{font-size:15px}}
 </style>
 </head>
 <body>
@@ -316,13 +330,14 @@ a{color:#cdf464}a:hover{opacity:.92}
    <h2>Você paga todo mês.<br><span>E nunca é dono de nada.</span></h2>
    <p>Plataforma de leads, de captura, de CRM… cada uma cobra a sua mensalidade. Parou de pagar, perdeu tudo: os contatos, o histórico, a ferramenta. Você nunca é dono.</p>
    <p class="f">Com o Radar Local você paga uma vez e ele trabalha pra você pelo resto da vida.</p>
+   <ul class="gains"><li class="gt" style="display:block">O que você ganha com o Radar</li><li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#141a00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i>A ferramenta é sua pra sempre</li><li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#141a00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i>Seus contatos e histórico ficam com você</li><li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#141a00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i>Nenhuma cobrança todo mês</li><li><i><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#141a00" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></i>Capture quanto quiser, sem limite</li></ul>
   </div>
   <div class="pchart" id="pchart">
    <div class="pq"><span>Quanto você gasta por mês com ferramentas?</span><b id="pmes"></b></div>
    <input class="prange" id="prange" type="range" min="50" max="500" step="10" value="200" aria-label="Quanto você gasta por mês com ferramentas?">
    <div class="bars"><div class="bar"><span class="v" data-y="1">–</span><div class="col" data-y="1"></div></div><div class="bar"><span class="v" data-y="3">–</span><div class="col" data-y="3"></div></div><div class="bar"><span class="v" data-y="5">–</span><div class="col" data-y="5"></div></div><div class="bar me"><span class="v">R$ 87</span><div class="col" data-y="0"></div></div></div>
    <div class="blbl"><span>1 ano</span><span>3 anos</span><span>5 anos</span><span class="me">Radar Local<br>uma vez</span></div>
-   <div class="econ"><span>Em 5 anos, fica no seu bolso</span><b id="pecon"></b></div>
+   <div class="econ2"><span class="l">VOCÊ ECONOMIZA</span><b class="n" id="pecon"></b><span class="s">em 5 anos · e continua economizando depois</span><div class="row2"><span>em 1 ano: <b id="pe1"></b></span><span>em 3 anos: <b id="pe3"></b></span></div></div>
   </div>
  </div>
 </div>
@@ -546,7 +561,7 @@ new IntersectionObserver(function(e){precoIn=e[0].isIntersecting;upd()},{thresho
   document.querySelectorAll('#pchart .col').forEach(function(c){var y=+c.dataset.y,v=y?m*12*y:price;c.style.height=on?Math.max(3,v/max*100)+'%':'0%'});
   document.querySelectorAll('#pchart .v[data-y]').forEach(function(e){e.textContent=f(m*12*(+e.dataset.y))});
   var pct=Math.round((r.value-r.min)/(r.max-r.min)*100);r.style.background='linear-gradient(90deg,#ff8a7a '+pct+'%,#23272f '+pct+'%)';
-  anim(document.getElementById('pecon'),m*60-price)}
+  anim(document.getElementById('pecon'),m*60-price);document.getElementById('pe1').textContent=f(Math.max(0,m*12-price));document.getElementById('pe3').textContent=f(m*36-price)}
  var last=0,raf;function anim(el,to){cancelAnimationFrame(raf);var from=last,t0=null;(function s(t){t0=t0||t;var p=Math.min(1,(t-t0)/700),e=1-Math.pow(1-p,3);el.textContent=f(from+(to-from)*e);if(p<1)raf=requestAnimationFrame(s);else last=to})(performance.now())}
  r.addEventListener('input',draw);
  if('IntersectionObserver' in window){new IntersectionObserver(function(en,o){if(en[0].isIntersecting){on=true;draw();o.disconnect()}},{threshold:.35}).observe(document.getElementById('pchart'))}else{on=true}
