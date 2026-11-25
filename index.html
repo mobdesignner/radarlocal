@@ -150,7 +150,8 @@ h2{font-size:clamp(32px,4.6vw,54px);margin:14px 0 14px}.lead{color:var(--mut);fo
 .ft-vazio{color:var(--mut);display:grid;place-items:center;text-align:center;flex:1;padding:20px}
 .ft-nota{font-size:12px;color:var(--mut);margin:0}
 .st{font-size:13.5px;color:var(--mut);min-height:20px;margin-top:10px}
-.leaflet-container{background:#0d0f13;font:inherit}
+.leaflet-container{background:#0d0f13;font:inherit}.leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.9) saturate(.5)}.leaflet-control-attribution{background:rgba(11,13,17,.8)!important;color:#8b919c!important}.leaflet-control-attribution a{color:#a9afba!important}.leaflet-bar a{background:#181b21!important;color:#eef0f4!important;border-color:#2b3039!important}
+.busca input:-webkit-autofill{-webkit-box-shadow:0 0 0 60px #0b0d11 inset!important;-webkit-text-fill-color:#eef0f4!important;caret-color:#eef0f4}
 .pin{background:var(--ac);color:var(--ink);border-radius:999px;font:700 11px Inter;padding:3px 7px;white-space:nowrap;box-shadow:0 4px 10px rgba(0,0,0,.5)}
 .pin.semsite{background:var(--red);color:#fff}
 @media(max-width:900px){.ramos{flex-wrap:nowrap;overflow-x:auto;margin:0 -22px;padding:0 22px 4px;scrollbar-width:none}.ramos button{flex:none}.ft-g{grid-template-columns:1fr}#mapa{min-height:320px}.ft-r{border-left:0;border-top:1px solid var(--line)}.busca{flex-direction:column}.big b{font-size:52px}}
@@ -519,28 +520,28 @@ function conta(){var s=+rs.value,m=+rm.value,n=+rn.value;vs.textContent=brl(s);v
 ['rs','rm','rn'].forEach(function(id){document.getElementById(id).addEventListener('input',conta)});conta();
 // ===== teste grátis: mapa com comércios do OpenStreetMap =====
 var RAMOS=[
- {n:'Barbearia',e:'tesoura',q:['["shop"="hairdresser"]["name"~"barb",i]','["shop"="barber"]']},
- {n:'Salão de beleza',e:'salao',q:['["shop"="hairdresser"]','["shop"="beauty"]']},
- {n:'Restaurante',e:'prato',q:['["amenity"="restaurant"]']},
- {n:'Pizzaria',e:'pizza',q:['["cuisine"~"pizza"]']},
- {n:'Hamburgueria',e:'burger',q:['["cuisine"~"burger"]']},
- {n:'Padaria',e:'pao',q:['["shop"="bakery"]']},
- {n:'Dentista',e:'dente',q:['["amenity"="dentist"]','["healthcare"="dentist"]']},
- {n:'Pet shop',e:'pata',q:['["shop"="pet"]','["amenity"="veterinary"]']},
- {n:'Academia',e:'haltere',q:['["leisure"="fitness_centre"]']},
- {n:'Oficina',e:'chave',q:['["shop"="car_repair"]']},
- {n:'Ótica',e:'oculos',q:['["shop"="optician"]']},
- {n:'Cafeteria',e:'cafe',q:['["amenity"="cafe"]']}];
+ {n:'Barbearia',p:'barbearias',k:'barbearia',e:'tesoura',q:['["shop"="hairdresser"]["name"~"barb",i]','["shop"="barber"]']},
+ {n:'Salão de beleza',p:'salões de beleza',k:'[hairdresser]',e:'salao',q:['["shop"="hairdresser"]','["shop"="beauty"]']},
+ {n:'Restaurante',p:'restaurantes',k:'[restaurant]',e:'prato',q:['["amenity"="restaurant"]']},
+ {n:'Pizzaria',p:'pizzarias',k:'pizzaria',e:'pizza',q:['["cuisine"~"pizza"]']},
+ {n:'Hamburgueria',p:'hamburguerias',k:'burger',e:'burger',q:['["cuisine"~"burger"]']},
+ {n:'Padaria',p:'padarias',k:'[bakery]',e:'pao',q:['["shop"="bakery"]']},
+ {n:'Dentista',p:'dentistas',k:'[dentist]',e:'dente',q:['["amenity"="dentist"]','["healthcare"="dentist"]']},
+ {n:'Pet shop',p:'pet shops',k:'pet shop',e:'pata',q:['["shop"="pet"]','["amenity"="veterinary"]']},
+ {n:'Academia',p:'academias',k:'academia',e:'haltere',q:['["leisure"="fitness_centre"]']},
+ {n:'Oficina',p:'oficinas',k:'[car_repair]',e:'chave',q:['["shop"="car_repair"]']},
+ {n:'Ótica',p:'óticas',k:'[optician]',e:'oculos',q:['["shop"="optician"]']},
+ {n:'Cafeteria',p:'cafeterias',k:'[cafe]',e:'cafe',q:['["amenity"="cafe"]']}];
 var ram=0,mapa=null,camada=null;
 var rb=document.getElementById('ramos');
 RAMOS.forEach(function(r,i){var b=document.createElement('button');b.type='button';b.innerHTML=ICO[r.e]+'<span>'+r.n+'</span>';if(!i)b.className='on';b.onclick=function(){ram=i;rb.querySelectorAll('button').forEach(function(x,j){x.classList.toggle('on',j===i)});if(ondeTxt())buscar()};rb.appendChild(b)});
 function iniMapa(){if(mapa||!window.L)return;mapa=L.map('mapa',{zoomControl:true,attributionControl:true}).setView([-23.66,-46.53],12);
- L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{maxZoom:19,subdomains:'abcd',attribution:'© OpenStreetMap · © CARTO'}).addTo(mapa)}
+ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(mapa)}
 var st=document.getElementById('st'),res=document.getElementById('res');
 document.getElementById('fbusca').addEventListener('submit',function(e){e.preventDefault();buscar()});
 var ocup=false;function ondeTxt(){return document.getElementById('cidade').value.trim()}
 async function buscar(){if(ocup)return;var loc=ondeTxt();if(!loc)return;var ftg=document.getElementById('ftg');var nova=ftg.hidden;ftg.hidden=false;iniMapa();setTimeout(function(){if(mapa)mapa.invalidateSize()},80);if(nova&&innerWidth<900)setTimeout(function(){ftg.scrollIntoView({behavior:'smooth',block:'start'})},150);
- ocup=true;st.textContent='';res.innerHTML='<div class="carr"><div class="mr"></div><div>Procurando '+esc(RAMOS[ram].n.toLowerCase())+'s perto de<br><b style="color:var(--tx)">'+esc(loc)+'</b>…</div></div>';
+ ocup=true;st.textContent='';res.innerHTML='<div class="carr"><div class="mr"></div><div>Procurando '+esc(RAMOS[ram].p)+' perto de<br><b style="color:var(--tx)">'+esc(loc)+'</b>…</div></div>';
  try{var g=await (await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q='+encodeURIComponent(loc))).json();
   if(!g.length){res.innerHTML='<div class="ft-vazio">Não achei esse lugar. Tente "bairro, cidade".</div>';ocup=false;return}
   var lat=+g[0].lat,lon=+g[0].lon,R=RAMOS[ram];
@@ -549,12 +550,12 @@ async function buscar(){if(ocup)return;var loc=ondeTxt();if(!loc)return;var ftg=
   var d;try{d=await overpass(q)}catch(e1){d=await reserva(R,lat,lon)}
   var els=(d.elements||[]).filter(function(x){return x.tags&&x.tags.name});
   mostra(els,lat,lon,R,g[0].display_name.split(',')[0]);st.textContent='';fbq('trackCustom','TesteBairro',{ramo:R.n});
- }catch(err){res.innerHTML='<div class="ft-vazio">O mapa gratuito está ocupado agora. Tente de novo em alguns segundos.</div>'}
+ }catch(err){res.innerHTML='<div class="ft-vazio"><div><p style="margin:0 0 14px">O mapa do teste grátis não respondeu agora.</p><button class="btn b2" type="button" onclick="buscar()">Tentar de novo</button></div></div>'}
  ocup=false}
 var OVP=['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter','https://overpass.private.coffee/api/interpreter','https://maps.mail.ru/osm/tools/overpass/api/interpreter'];
 function umOvp(u,q){var c=new AbortController(),t=setTimeout(function(){c.abort()},7000);return fetch(u,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'data='+encodeURIComponent(q),signal:c.signal}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(j){clearTimeout(t);if(!j||!j.elements)throw new Error('vazio');return j})}
 function overpass(q){return new Promise(function(ok,no){var falhas=0,feito=false;OVP.forEach(function(u){umOvp(u,q).then(function(j){if(!feito){feito=true;ok(j)}}).catch(function(){if(++falhas===OVP.length&&!feito)no(new Error('todos'))})})})}
-async function reserva(R,lat,lon){var d=0.025,vb=[lon-d,lat+d,lon+d,lat-d].join(',');var r=await fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=50&bounded=1&extratags=1&viewbox='+vb+'&q='+encodeURIComponent(R.n));if(!r.ok)throw new Error(r.status);var j=await r.json();
+async function reserva(R,lat,lon){var d=0.025,vb=[lon-d,lat+d,lon+d,lat-d].join(',');var r=await fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=50&bounded=1&extratags=1&viewbox='+vb+'&q='+encodeURIComponent(R.k));if(!r.ok)throw new Error(r.status);var j=await r.json();
  return {elements:j.filter(function(x){return x.name}).map(function(x){var t=x.extratags||{};t.name=x.name;return {lat:+x.lat,lon:+x.lon,tags:t}})}}
 function mostra(els,lat,lon,R,lugar){if(camada)mapa.removeLayer(camada);camada=L.layerGroup().addTo(mapa);
  L.circle([lat,lon],{radius:2500,color:'#c8f560',weight:1,fillColor:'#c8f560',fillOpacity:.06}).addTo(camada);
@@ -562,8 +563,8 @@ function mostra(els,lat,lon,R,lugar){if(camada)mapa.removeLayer(camada);camada=L
   L.marker([la,lo],{icon:L.divIcon({className:'',html:'<span class="pin'+(ss?' semsite':'')+'">'+(ss?'sem site':'✓ site')+'</span>',iconAnchor:[24,10]})}).bindTooltip(t.name).addTo(camada)});
  mapa.fitBounds(L.latLng(lat,lon).toBounds(5200));
  var n=els.length,pct=n?Math.round(sem*100/n):0;
- if(!n){res.innerHTML='<div class="ft-vazio">O mapa aberto não tem '+R.n.toLowerCase()+'s cadastrados aqui. No Google Maps costuma ter bem mais, e é lá que o Radar busca.</div>';return}
- res.innerHTML='<div class="big"><b>'+n+'</b><span>'+R.n.toLowerCase()+(n>1?'s':'')+' num raio de 2,5 km de '+esc(lugar)+'</span></div>'
+ if(!n){res.innerHTML='<div class="ft-vazio"><div><p style="margin:0 0 16px">O mapa aberto, usado neste teste grátis, não tem '+R.p+' cadastrados nessa região. O Radar busca direto no Google Maps, que tem muito mais comércios.</p><a class="btn b1 buy" href="'+CHECKOUT+_q+'">Buscar com o Radar · R$ '+PRECO+'</a></div></div>';return}
+ res.innerHTML='<div class="big"><b>'+n+'</b><span>'+(n>1?R.p:R.n.toLowerCase())+' num raio de 2,5 km de '+esc(lugar)+'</span></div>'
   +'<div class="kp"><div class="q"><b>'+sem+'</b><span>sem site cadastrado ('+pct+'%)</span></div><div class="q"><b>'+semtel+'</b><span>sem telefone no mapa</span></div></div>'
   +'<div class="lk"><i>'+ICO.cad+'</i><span>Nota no Google e quantas avaliações cada um tem</span><em></em></div>'
   +'<div class="lk"><i>'+ICO.cad+'</i><span>Quem não responde avaliação e quem está parado</span><em></em></div>'
