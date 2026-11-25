@@ -510,7 +510,7 @@ var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isInter
 document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
 // ===== vitrine de sites reais =====
 function carregaEx(cb){if(window.EX_DOC)return cb();if(carregaEx.f)return carregaEx.f.push(cb);carregaEx.f=[cb];var sc=document.createElement('script');sc.src='vitrine.js?v=1';sc.onload=function(){carregaEx.f.forEach(function(f){f()})};document.body.appendChild(sc)}
-(function(){var EXS=[{k:['barbearia','barber'],n:'Barbearia',u:'barbeariadomcorte'},{k:['pizzaria','pizza'],n:'Pizzaria',u:'fornonnapizzaria'},{k:'dentista',n:'Dentista',u:'sorrisopleno'},{k:['academia','[fitness_centre]'],n:'Academia',u:'impulsofit'},{k:'estetica',n:'Estética',u:'studiobellapele'},{k:'pet',n:'Pet shop',u:'petamigo'}];
+(function(){var EXS=[{k:'barbearia',n:'Barbearia',u:'barbeariadomcorte'},{k:'pizzaria',n:'Pizzaria',u:'fornonnapizzaria'},{k:'dentista',n:'Dentista',u:'sorrisopleno'},{k:'academia',n:'Academia',u:'impulsofit'},{k:'estetica',n:'Estética',u:'studiobellapele'},{k:'pet',n:'Pet shop',u:'petamigo'}];
  var tabs=document.getElementById('vtabs'),pc=document.querySelector('#tpc iframe'),cel=document.querySelector('#tcel iframe'),at=-1,tm=null,auto=true,rolar=[];
  function escala(){[[pc,1280],[cel,390]].forEach(function(p){var box=p[0].parentNode,w=box.clientWidth;if(!w)return;var e=w/p[1];p[0].style.width=p[1]+'px';p[0].style.height=(box.clientHeight/e)+'px';p[0].style.transform='scale('+e+')'})}
  function rola(fr){fr.onload=function(){var t0=null,win;try{win=fr.contentWindow;win.document.documentElement.style.scrollBehavior='auto'}catch(e){return}
@@ -533,15 +533,15 @@ function conta(){var s=+rs.value,m=+rm.value,n=+rn.value;vs.textContent=brl(s);v
 ['rs','rm','rn'].forEach(function(id){document.getElementById(id).addEventListener('input',conta)});conta();
 // ===== teste grátis: mapa com comércios do OpenStreetMap =====
 var RAMOS=[
- {n:'Barbearia',p:'barbearias',k:'barbearia',e:'tesoura',q:['["shop"="hairdresser"]["name"~"barb",i]','["shop"="barber"]']},
+ {n:'Barbearia',p:'barbearias',k:['barbearia','barber'],e:'tesoura',q:['["shop"="hairdresser"]["name"~"barb",i]','["shop"="barber"]']},
  {n:'Salão de beleza',p:'salões de beleza',k:'[hairdresser]',e:'salao',q:['["shop"="hairdresser"]','["shop"="beauty"]']},
  {n:'Restaurante',p:'restaurantes',k:'[restaurant]',e:'prato',q:['["amenity"="restaurant"]']},
- {n:'Pizzaria',p:'pizzarias',k:'pizzaria',e:'pizza',q:['["cuisine"~"pizza"]']},
+ {n:'Pizzaria',p:'pizzarias',k:['pizzaria','pizza'],e:'pizza',q:['["cuisine"~"pizza"]']},
  {n:'Hamburgueria',p:'hamburguerias',k:['burger','hamburgueria'],e:'burger',q:['["cuisine"~"burger"]']},
  {n:'Padaria',p:'padarias',k:'[bakery]',e:'pao',q:['["shop"="bakery"]']},
  {n:'Dentista',p:'dentistas',k:'[dentist]',e:'dente',q:['["amenity"="dentist"]','["healthcare"="dentist"]']},
  {n:'Pet shop',p:'pet shops',k:['pet shop','[veterinary]'],e:'pata',q:['["shop"="pet"]','["amenity"="veterinary"]']},
- {n:'Academia',p:'academias',k:'academia',e:'haltere',q:['["leisure"="fitness_centre"]']},
+ {n:'Academia',p:'academias',k:['academia','[fitness_centre]'],e:'haltere',q:['["leisure"="fitness_centre"]']},
  {n:'Oficina',p:'oficinas',k:'[car_repair]',e:'chave',q:['["shop"="car_repair"]']},
  {n:'Ótica',p:'óticas',k:['[optician]','ótica'],e:'oculos',q:['["shop"="optician"]']},
  {n:'Cafeteria',p:'cafeterias',k:'[cafe]',e:'cafe',q:['["amenity"="cafe"]']}];
