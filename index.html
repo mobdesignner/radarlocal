@@ -571,7 +571,7 @@ function mostra(els,cx,R,lugar){if(camada)mapa.removeLayer(camada);camada=L.laye
   L.marker([la,lo],{icon:L.divIcon({className:'',html:'<span class="pin'+(ss?' semsite':'')+'">'+(ss?'sem site':'✓ site')+'</span>',iconAnchor:[24,10]})}).bindTooltip(t.name).addTo(camada)});
  mapa.fitBounds(pts.length>1?L.latLngBounds(pts).pad(.15):[[cx[0],cx[1]],[cx[2],cx[3]]]);
  var n=els.length,pct=n?Math.round(sem*100/n):0;
- if(!n){res.innerHTML='<div class="ft-vazio"><div><p style="margin:0 0 16px">O mapa aberto, usado neste teste grátis, não tem '+R.p+' cadastrados nessa cidade. O Radar busca direto no Google Maps, que tem muito mais comércios.</p><a class="btn b1 buy" href="'+CHECKOUT+_q+'">Buscar com o Radar · R$ '+PRECO+'</a></div></div>';return}
+ if(!n){res.innerHTML='<div class="ft-vazio"><div><p style="margin:0 0 16px">O mapa aberto, usado neste teste grátis, não tem registro de '+R.p+' nessa cidade. O Radar busca direto no Google Maps, que tem muito mais comércios.</p><a class="btn b1 buy" href="'+CHECKOUT+_q+'">Buscar com o Radar · R$ '+PRECO+'</a></div></div>';return}
  res.innerHTML='<div class="big"><b>'+n+'</b><span>'+(n>1?R.p:R.n.toLowerCase())+' em '+esc(lugar)+'</span></div>'
   +'<div class="kp"><div class="q"><b>'+sem+'</b><span>sem site cadastrado ('+pct+'%)</span></div><div class="q"><b>'+semtel+'</b><span>sem telefone no mapa</span></div></div>'
   +(nomes.length?'<div class="nm">'+nomes.map(function(x){return '<div><b>'+esc(x)+'</b><em>sem site</em></div>'}).join('')+(sem>nomes.length?'<small>+ '+(sem-nomes.length)+' sem site nesta amostra</small>':'')+'</div>':'')
