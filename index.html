@@ -495,6 +495,17 @@ if(!lanc){document.querySelectorAll('.vp').forEach(function(e){e.textContent='po
  var fx=document.getElementById('faixa');fx.innerHTML='Pagamento único de <b>R$ 87</b>. Sem mensalidade, seu pra sempre.'}
 fbq('track','ViewContent',{content_name:'Radar Local',content_category:'radar',value:PRECO,currency:'BRL'});
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.buy');if(a){fbq('track','InitiateCheckout',{content_name:'Radar Local',value:PRECO,currency:'BRL'})}},true);
+// ===== contador próprio (sem dados pessoais) =====
+(function(){var U='https://luhsufzluckybesdpsym.supabase.co/functions/v1/radar-evento',q=new URLSearchParams(location.search),k='rl_s',sid;
+ try{sid=sessionStorage.getItem(k);if(!sid){sid=Math.random().toString(36).slice(2,12);sessionStorage.setItem(k,sid)}}catch(e){sid=Math.random().toString(36).slice(2,12)}
+ var base={s:sid,p:location.pathname,o:q.get('utm_source')||(document.referrer?(new URL(document.referrer)).hostname:'direto'),c:q.get('utm_campaign')||'',ct:q.get('utm_content')||'',m:innerWidth<=760};
+ var feitos={};window.rlEv=function(e,x){if(e!=='teste'&&e!=='clique_comprar'&&feitos[e])return;feitos[e]=1;var b=JSON.stringify(Object.assign({},base,{e:e,x:x||''}));
+  try{if(navigator.sendBeacon&&navigator.sendBeacon(U,new Blob([b],{type:'text/plain'})))return}catch(err){}try{fetch(U,{method:'POST',body:b,keepalive:true,mode:'no-cors'})}catch(err){}};
+ rlEv('visita');
+ addEventListener('scroll',function(){var h=document.documentElement;if((scrollY+innerHeight)/h.scrollHeight>.5)rlEv('leu_50')},{passive:true});
+ var pr=document.getElementById('preco');if(pr&&'IntersectionObserver' in window){var o=new IntersectionObserver(function(es){if(es[0].isIntersecting){rlEv('viu_preco');o.disconnect()}},{threshold:.35});o.observe(pr)}
+ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.buy');if(a)rlEv('clique_comprar',(a.closest('section,header,.fixo')||{}).id||(a.closest('.fixo')?'barra':'')||'')},true);
+})();
 // ===== palavra que gira no título =====
 (function(){var W=['barbearia','pizzaria','clínica','academia','pet shop','padaria','oficina','hamburgueria'],i=0,el=document.getElementById('rotw');if(!el||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
  setInterval(function(){el.classList.add('sai');setTimeout(function(){i=(i+1)%W.length;el.textContent=W[i];el.classList.remove('sai');el.classList.add('entra');void el.offsetWidth;el.classList.remove('entra')},450)},2300)})();
@@ -593,7 +604,7 @@ async function buscar(){if(ocup)return;var loc=ondeTxt();if(!loc)return;var ftg=
    var eg=[];try{eg=((await overpass(qg)).elements||[]).filter(function(x){return x.tags&&x.tags.name})}catch(e3){}
    if(eg.length<6){try{var d3=await reserva(G,cx);var v2={};eg.forEach(function(x){v2[x.tags.name.toLowerCase()]=1});d3.elements.forEach(function(x){if(!v2[x.tags.name.toLowerCase()]){v2[x.tags.name.toLowerCase()]=1;eg.push(x)}})}catch(e4){}}
    if(eg.length>els.length){els=eg;orig=R;R=G}}
-  mostra(els,cx,R,g[0].display_name.split(',')[0],orig);st.textContent='';fbq('trackCustom','TesteBairro',{ramo:R.n});
+  mostra(els,cx,R,g[0].display_name.split(',')[0],orig);st.textContent='';fbq('trackCustom','TesteBairro',{ramo:R.n});if(window.rlEv)rlEv('teste',R.n);
  }catch(err){res.innerHTML='<div class="ft-vazio"><div><p style="margin:0 0 14px">O mapa do teste grátis não respondeu agora.</p><button class="btn b2" type="button" onclick="buscar()">Tentar de novo</button></div></div>'}
  fimBusca();ocup=false}
 var OVP=['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter','https://overpass.private.coffee/api/interpreter','https://maps.mail.ru/osm/tools/overpass/api/interpreter'];
