@@ -546,13 +546,16 @@ async function buscar(){if(ocup)return;var loc=ondeTxt();if(!loc)return;var ftg=
   var lat=+g[0].lat,lon=+g[0].lon,R=RAMOS[ram];
   var parts=R.q.map(function(f){return 'nwr'+f+'(around:2500,'+lat+','+lon+');'}).join('');
   var q='[out:json][timeout:20];('+parts+');out center 200;';
-  var d=await overpass(q);
+  var d;try{d=await overpass(q)}catch(e1){d=await reserva(R,lat,lon)}
   var els=(d.elements||[]).filter(function(x){return x.tags&&x.tags.name});
   mostra(els,lat,lon,R,g[0].display_name.split(',')[0]);st.textContent='';fbq('trackCustom','TesteBairro',{ramo:R.n});
  }catch(err){res.innerHTML='<div class="ft-vazio">O mapa gratuito está ocupado agora. Tente de novo em alguns segundos.</div>'}
  ocup=false}
 var OVP=['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter','https://overpass.private.coffee/api/interpreter','https://maps.mail.ru/osm/tools/overpass/api/interpreter'];
-async function overpass(q){var ult;for(var i=0;i<OVP.length;i++){try{var r=await fetch(OVP[i],{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'data='+encodeURIComponent(q)});if(!r.ok)throw new Error(r.status);var j=await r.json();if(j&&j.elements)return j}catch(e){ult=e}}throw ult||new Error('sem resposta')}
+function umOvp(u,q){var c=new AbortController(),t=setTimeout(function(){c.abort()},7000);return fetch(u,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'data='+encodeURIComponent(q),signal:c.signal}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(j){clearTimeout(t);if(!j||!j.elements)throw new Error('vazio');return j})}
+function overpass(q){return new Promise(function(ok,no){var falhas=0,feito=false;OVP.forEach(function(u){umOvp(u,q).then(function(j){if(!feito){feito=true;ok(j)}}).catch(function(){if(++falhas===OVP.length&&!feito)no(new Error('todos'))})})})}
+async function reserva(R,lat,lon){var d=0.025,vb=[lon-d,lat+d,lon+d,lat-d].join(',');var r=await fetch('https://nominatim.openstreetmap.org/search?format=jsonv2&limit=50&bounded=1&extratags=1&viewbox='+vb+'&q='+encodeURIComponent(R.n));if(!r.ok)throw new Error(r.status);var j=await r.json();
+ return {elements:j.filter(function(x){return x.name}).map(function(x){var t=x.extratags||{};t.name=x.name;return {lat:+x.lat,lon:+x.lon,tags:t}})}}
 function mostra(els,lat,lon,R,lugar){if(camada)mapa.removeLayer(camada);camada=L.layerGroup().addTo(mapa);
  L.circle([lat,lon],{radius:2500,color:'#c8f560',weight:1,fillColor:'#c8f560',fillOpacity:.06}).addTo(camada);
  var sem=0,semtel=0;els.forEach(function(x){var t=x.tags,ss=!(t.website||t['contact:website']||t.url),la=x.lat||(x.center&&x.center.lat),lo=x.lon||(x.center&&x.center.lon);if(!la)return;if(ss)sem++;if(!(t.phone||t['contact:phone']||t['contact:whatsapp']))semtel++;
