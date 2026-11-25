@@ -146,9 +146,21 @@ h2{font-size:clamp(32px,4.6vw,54px);margin:14px 0 14px}.lead{color:var(--mut);fo
 .kp .q b{color:var(--red)}
 .lk{display:flex;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px}
 .lk i{display:grid;color:var(--mut)}.lk svg{width:16px;height:16px}.lk span{flex:1}.lk em{font-style:normal;height:8px;flex:0 0 38%;border-radius:8px;background:repeating-linear-gradient(90deg,#3a3f4a 0 18px,#2a2e37 18px 26px);filter:blur(1.5px)}
-@keyframes abre{from{opacity:0;transform:translateY(10px)}}.carr{display:grid;place-items:center;gap:14px;flex:1;text-align:center;color:var(--mut)}.carr .mr{width:110px;height:110px;border-radius:50%;border:1px solid rgba(205,244,100,.25);position:relative;overflow:hidden}.carr .mr:before{content:"";position:absolute;inset:0;background:conic-gradient(rgba(205,244,100,.45),transparent 25%);animation:gira 1.6s linear infinite}.carr .mr:after{content:"";position:absolute;inset:34%;border-radius:50%;border:1px solid rgba(205,244,100,.25)}
+@keyframes abre{from{opacity:0;transform:translateY(10px)}}.carr{display:grid;place-items:center;align-content:center;gap:22px;flex:1;text-align:center;color:var(--mut);min-height:300px}
+.carr .mr{width:170px;height:170px;border-radius:50%;position:relative;overflow:hidden;border:1px solid rgba(205,244,100,.3);background:radial-gradient(circle,rgba(205,244,100,.1),transparent 70%),repeating-radial-gradient(circle,transparent 0 27px,rgba(205,244,100,.16) 27px 28px);box-shadow:0 0 50px -12px rgba(205,244,100,.5),inset 0 0 30px rgba(205,244,100,.08)}
+.carr .mr:before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(205,244,100,.16),rgba(205,244,100,.16)) 50% 0/1px 100% no-repeat,linear-gradient(rgba(205,244,100,.16),rgba(205,244,100,.16)) 0 50%/100% 1px no-repeat}
+.carr .mr span{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,rgba(205,244,100,.6),rgba(205,244,100,.1) 14%,transparent 30%);animation:gira 1.8s linear infinite}
+.carr .mr span:after{content:"";position:absolute;left:50%;top:0;width:2px;height:50%;background:#cdf464;box-shadow:0 0 12px #cdf464;transform:translateX(-1px)}
+.carr .mr b{position:absolute;left:50%;top:50%;width:9px;height:9px;margin:-4.5px;border-radius:50%;background:var(--ac);box-shadow:0 0 14px var(--ac);z-index:2}
+.carr .mr i{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--red);box-shadow:0 0 10px var(--red);opacity:0;animation:achou 2.5s infinite;z-index:2}
+@keyframes achou{0%,10%{opacity:0;transform:scale(.3)}20%{opacity:1;transform:scale(1.5)}35%,70%{opacity:1;transform:scale(1)}100%{opacity:0}}
+.cst{display:block;font:700 18px "Space Grotesk";color:var(--tx)}.carr small{display:block;margin-top:4px;font-size:13.5px}
+.cbar{display:block;width:180px;height:4px;border-radius:4px;background:#22262e;margin:14px auto 0;overflow:hidden}.cbar u{display:block;height:100%;width:40%;border-radius:4px;background:var(--ac);animation:corre 1.3s ease-in-out infinite}
+@keyframes corre{0%{transform:translateX(-110%)}100%{transform:translateX(280%)}}
+#mapa{position:relative;overflow:hidden}#ftg.busc #mapa:before{content:"";position:absolute;inset:0;z-index:600;background:rgba(11,13,17,.5);pointer-events:none}
+#ftg.busc #mapa:after{content:"";position:absolute;left:50%;top:50%;width:160%;aspect-ratio:1;margin:-80% 0 0 -80%;z-index:601;border-radius:50%;background:conic-gradient(from 0deg,rgba(205,244,100,.3),rgba(205,244,100,.05) 12%,transparent 26%);animation:gira 2.4s linear infinite;pointer-events:none}
 .ft-vazio{color:var(--mut);display:grid;place-items:center;text-align:center;flex:1;padding:20px}
-.nm{display:grid;gap:6px}.nm div{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:13.5px}.nm b{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.nm em{font-style:normal;flex:none;font:700 10.5px Inter;color:#fff;background:var(--red);border-radius:6px;padding:3px 7px}.nm small{color:var(--mut);font-size:12px}
+.nm{display:grid;gap:6px}.nm div{display:flex;align-items:center;gap:10px;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:13.5px}.nm i{display:grid;color:var(--mut)}.nm i svg{width:15px;height:15px}.nm u{display:block;height:10px;border-radius:6px;background:repeating-linear-gradient(90deg,#4a505c 0 22px,#383d47 22px 30px);filter:blur(2.5px);margin-right:auto;text-decoration:none}.nm em{font-style:normal;flex:none;font:700 10.5px Inter;color:#fff;background:var(--red);border-radius:6px;padding:3px 7px}.nm small{color:var(--mut);font-size:12px}
 .ft-nota{font-size:12px;color:var(--mut);margin:0}
 .st{font-size:13.5px;color:var(--mut);min-height:20px;margin-top:10px}
 .leaflet-container{background:#0d0f13;font:inherit}.leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.9) contrast(.9) saturate(.5)}.leaflet-control-attribution{background:rgba(11,13,17,.8)!important;color:#8b919c!important}.leaflet-control-attribution a{color:#a9afba!important}.leaflet-bar a{background:#181b21!important;color:#eef0f4!important;border-color:#2b3039!important}
@@ -540,11 +552,12 @@ function iniMapa(){if(mapa||!window.L)return;mapa=L.map('mapa',{zoomControl:true
  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:19,attribution:'© OpenStreetMap'}).addTo(mapa)}
 var st=document.getElementById('st'),res=document.getElementById('res');
 document.getElementById('fbusca').addEventListener('submit',function(e){e.preventDefault();buscar()});
-var ocup=false;function ondeTxt(){return document.getElementById('cidade').value.trim()}
+var ocup=false;function fimBusca(){clearInterval(window._tb);document.getElementById('ftg').classList.remove('busc')}function ondeTxt(){return document.getElementById('cidade').value.trim()}
 async function buscar(){if(ocup)return;var loc=ondeTxt();if(!loc)return;var ftg=document.getElementById('ftg');var nova=ftg.hidden;ftg.hidden=false;iniMapa();setTimeout(function(){if(mapa)mapa.invalidateSize()},80);if(nova&&innerWidth<900)setTimeout(function(){ftg.scrollIntoView({behavior:'smooth',block:'start'})},150);
- ocup=true;st.textContent='';res.innerHTML='<div class="carr"><div class="mr"></div><div>Procurando '+esc(RAMOS[ram].p)+' em<br><b style="color:var(--tx)">'+esc(loc)+'</b>…</div></div>';
+ ocup=true;st.textContent='';res.innerHTML='<div class="carr"><div class="mr"><b></b><span></span><i style="left:68%;top:26%"></i><i style="left:30%;top:36%;animation-delay:.5s"></i><i style="left:62%;top:70%;animation-delay:1s"></i><i style="left:24%;top:64%;animation-delay:1.5s"></i><i style="left:46%;top:18%;animation-delay:2s"></i></div><div><b class="cst" id="cst">Varrendo o mapa…</b><small>'+esc(RAMOS[ram].p)+' em '+esc(loc)+'</small><em class="cbar"><u></u></em></div></div>';
+ ftg.classList.add('busc');var _f=['Varrendo o mapa…','Achando os comércios…','Conferindo quem tem site…','Montando o resultado…'],_k=0;clearInterval(window._tb);window._tb=setInterval(function(){var e=document.getElementById('cst');if(e){_k=Math.min(_k+1,_f.length-1);e.textContent=_f[_k]}},2300);
  try{var g=await (await fetch('https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=br&q='+encodeURIComponent(loc))).json();
-  if(!g.length){res.innerHTML='<div class="ft-vazio">Não achei essa cidade. Confira o nome e tente de novo.</div>';ocup=false;return}
+  if(!g.length){res.innerHTML='<div class="ft-vazio">Não achei essa cidade. Confira o nome e tente de novo.</div>';fimBusca();ocup=false;return}
   var lat=+g[0].lat,lon=+g[0].lon,R=RAMOS[ram];
   var bb=g[0].boundingbox||[],M=0.13,m=0.03,S=+bb[0],N=+bb[1],W=+bb[2],E=+bb[3];
   if(!(N>S)||!(E>W)){S=lat-m;N=lat+m;W=lon-m;E=lon+m}
@@ -558,7 +571,7 @@ async function buscar(){if(ocup)return;var loc=ondeTxt();if(!loc)return;var ftg=
   if(falhou||els.length<6){try{var d2=await reserva(R,cx);var visto={};els.forEach(function(x){visto[x.tags.name.toLowerCase()]=1});d2.elements.forEach(function(x){if(!visto[x.tags.name.toLowerCase()]){visto[x.tags.name.toLowerCase()]=1;els.push(x)}})}catch(e2){if(falhou)throw e2}}
   mostra(els,cx,R,g[0].display_name.split(',')[0]);st.textContent='';fbq('trackCustom','TesteBairro',{ramo:R.n});
  }catch(err){res.innerHTML='<div class="ft-vazio"><div><p style="margin:0 0 14px">O mapa do teste grátis não respondeu agora.</p><button class="btn b2" type="button" onclick="buscar()">Tentar de novo</button></div></div>'}
- ocup=false}
+ fimBusca();ocup=false}
 var OVP=['https://overpass-api.de/api/interpreter','https://overpass.kumi.systems/api/interpreter','https://overpass.private.coffee/api/interpreter','https://maps.mail.ru/osm/tools/overpass/api/interpreter'];
 function umOvp(u,q){var c=new AbortController(),t=setTimeout(function(){c.abort()},7000);return fetch(u,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'data='+encodeURIComponent(q),signal:c.signal}).then(function(r){if(!r.ok)throw new Error(r.status);return r.json()}).then(function(j){clearTimeout(t);if(!j||!j.elements)throw new Error('vazio');return j})}
 function overpass(q){return new Promise(function(ok,no){var falhas=0,feito=false;OVP.forEach(function(u){umOvp(u,q).then(function(j){if(!feito){feito=true;ok(j)}}).catch(function(){if(++falhas===OVP.length&&!feito)no(new Error('todos'))})})})}
@@ -567,14 +580,14 @@ async function reserva(R,cx){var vb=[cx[1],cx[2],cx[3],cx[0]].join(','),todos=[]
  return {elements:todos.filter(function(x){return x.name}).map(function(x){var t=x.extratags||{};t.name=x.name;return {lat:+x.lat,lon:+x.lon,tags:t}})}}
 function mostra(els,cx,R,lugar){if(camada)mapa.removeLayer(camada);camada=L.layerGroup().addTo(mapa);
  var pts=[],nomes=[];
- var sem=0,semtel=0;els.forEach(function(x){var t=x.tags,ss=!(t.website||t['contact:website']||t.url),la=x.lat||(x.center&&x.center.lat),lo=x.lon||(x.center&&x.center.lon);if(!la)return;pts.push([la,lo]);if(ss){sem++;if(nomes.length<4)nomes.push(t.name)}if(!(t.phone||t['contact:phone']||t['contact:whatsapp']))semtel++;
-  L.marker([la,lo],{icon:L.divIcon({className:'',html:'<span class="pin'+(ss?' semsite':'')+'">'+(ss?'sem site':'✓ site')+'</span>',iconAnchor:[24,10]})}).bindTooltip(t.name).addTo(camada)});
+ var sem=0,semtel=0;els.forEach(function(x){var t=x.tags,ss=!(t.website||t['contact:website']||t.url),la=x.lat||(x.center&&x.center.lat),lo=x.lon||(x.center&&x.center.lon);if(!la)return;pts.push([la,lo]);if(ss){sem++;if(nomes.length<4)nomes.push(38+((t.name.length*7)%40))}if(!(t.phone||t['contact:phone']||t['contact:whatsapp']))semtel++;
+  L.marker([la,lo],{icon:L.divIcon({className:'',html:'<span class="pin'+(ss?' semsite':'')+'">'+(ss?'sem site':'✓ site')+'</span>',iconAnchor:[24,10]})}).addTo(camada)});
  mapa.fitBounds(pts.length>1?L.latLngBounds(pts).pad(.15):[[cx[0],cx[1]],[cx[2],cx[3]]]);
  var n=els.length,pct=n?Math.round(sem*100/n):0;
  if(!n){res.innerHTML='<div class="ft-vazio"><div><p style="margin:0 0 16px">O mapa aberto, usado neste teste grátis, não tem registro de '+R.p+' nessa cidade. O Radar busca direto no Google Maps, que tem muito mais comércios.</p><a class="btn b1 buy" href="'+CHECKOUT+_q+'">Buscar com o Radar · R$ '+PRECO+'</a></div></div>';return}
  res.innerHTML='<div class="big"><b>'+n+'</b><span>'+(n>1?R.p:R.n.toLowerCase())+' em '+esc(lugar)+'</span></div>'
   +'<div class="kp"><div class="q"><b>'+sem+'</b><span>sem site cadastrado ('+pct+'%)</span></div><div class="q"><b>'+semtel+'</b><span>sem telefone no mapa</span></div></div>'
-  +(nomes.length?'<div class="nm">'+nomes.map(function(x){return '<div><b>'+esc(x)+'</b><em>sem site</em></div>'}).join('')+(sem>nomes.length?'<small>+ '+(sem-nomes.length)+' sem site nesta amostra</small>':'')+'</div>':'')
+  +(nomes.length?'<div class="nm">'+nomes.map(function(w){return '<div><i>'+ICO.cad+'</i><u style="width:'+w+'%"></u><em>sem site</em></div>'}).join('')+'<small>'+(sem>nomes.length?'+ '+(sem-nomes.length)+' sem site. ':'')+'Nome, telefone e endereço liberados no Radar.</small>'+'</div>':'')
   +'<div class="lk"><i>'+ICO.cad+'</i><span>Nota no Google e quantas avaliações cada um tem</span><em></em></div>'
   +'<div class="lk"><i>'+ICO.cad+'</i><span>Quem não responde avaliação e quem está parado</span><em></em></div>'
   +'<div class="lk"><i>'+ICO.cad+'</i><span>Score de quem chamar primeiro e proposta pronta</span><em></em></div>'
