@@ -309,6 +309,11 @@ fbq('track','PageView');
  .fx-in small{font-size:11px}
 }
 </style>
+<style id="conquista">
+.pr .parc{text-align:center;margin:2px 0 6px;font-size:15px;color:var(--tx)}.pr .parc b{color:var(--ac)}
+.mob-vis{display:none}
+@media(max-width:900px){.mob-vis{display:block;padding:8px 0 30px;overflow:hidden}.mob-vis .hvis{order:0}}
+</style>
 </head>
 <body>
 
@@ -316,15 +321,14 @@ fbq('track','PageView');
 <header class="top"><div class="w">
   <a class="logo" href="#"><i><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#cdf464" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5" stroke-opacity=".45"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l6-6"/><circle cx="12" cy="12" r="1.4" fill="#cdf464"/></svg></i><span>Radar <em>Local</em></span></a>
   <nav><a href="#teste">Teste grátis</a><a href="#como">Como funciona</a><a href="#sites">Sites prontos</a><a href="#preco">Preço</a></nav>
-  <a class="btn b1 buy" href="#">Quero o meu <span class="vp">por R$ 47</span></a>
+  <a class="btn b1 buy" href="#">Quero o meu</a>
 </div></header>
 
 <section class="hero"><div class="w hg">
   <div>
     <h1>Encontre dezenas de clientes <span class="hl">com 1 clique.</span> Comece a vender hoje.</h1>
     <p class="lead">Você digita o ramo e a cidade. O Radar entrega a lista de cada <span class="rot"><span id="rotw">barbearia</span></span> que precisa de você, diz quem chamar primeiro, escreve a mensagem e gera o site pronto. <b>Sua parte é só fechar.</b></p>
-    <div class="hbts"><a class="btn b1 buy" href="#">Quero meus clientes <span class="vp">por R$ 47</span> →</a><a class="btn b2" href="#teste">Ver quem está sem site</a></div>
-    <p class="preco1"><b>R$ <span class="vpn">47</span> uma vez.</b> Sem pagar <s>R$ 97 todo mês</s> em ferramenta de prospecção.</p>
+    <div class="hbts"><a class="btn b1 go-teste" href="#teste">Quero encontrar meus clientes →</a><a class="btn b2" href="#como">Ver como funciona</a></div>
   </div>
   <div class="hvis" aria-hidden="true">
     <div class="bg-r"><span class="an a1"></span><span class="an a2"></span><span class="an a3"></span><span class="cx"></span><span class="cy"></span><span class="sw2"></span></div>
@@ -389,7 +393,7 @@ fbq('track','PageView');
     <div><b>Edita clicando</b><span>Troca foto, cor, texto e ordem das seções sem programar.</span></div>
     <div><b>No ar em 1 clique</b><span>Link próprio ou domínio do cliente, com controle das mensalidades.</span></div>
   </div>
-  <div class="hbts" style="justify-content:center"><a class="btn b1 buy" href="#">Quero gerar sites <span class="vp">por R$ 47</span></a></div>
+  <div class="hbts" style="justify-content:center"><a class="btn b1 buy" href="#">Quero gerar sites →</a></div>
 </div></section>
 
 <section class="sec"><div class="w dg">
@@ -447,7 +451,8 @@ fbq('track','PageView');
     <h3>Radar Local Completo</h3>
     <p class="de" id="dep">Ferramentas parecidas cobram cerca de <s>R$ 97 por mês</s>. Depois de 27/11: <s>R$ 87</s></p>
     <div class="vl"><small>R$</small><span id="vlp">47</span></div>
-    <p class="un">pagamento único · Pix, cartão (parcelado) ou boleto</p>
+    <p class="parc" id="parc">ou <b>11x de R$ 5,24</b> no cartão</p>
+    <p class="un">pagamento único · Pix ou cartão</p>
     <ul>
       <li>Programa para Windows + acesso pelo celular</li>
       <li>App Android que funciona sem PC</li>
@@ -483,7 +488,7 @@ fbq('track','PageView');
 </div></section>
 
 <footer><div class="w"><span>Radar Local · prospecção para comércio local</span><span>Pagamento processado pela Cakto</span></div></footer>
-<div class="fixo"><div class="fx-in"><div><b class="vp2">R$ 47</b><small id="fxs">até sexta, 27/11 · depois R$ 87</small></div><a class="btn b1 buy" href="#">Quero o meu</a></div></div>
+<div class="fixo"><div class="fx-in"><div><b class="vp2">R$ 47</b><small id="fxs">ou 11x de R$ 5,24 · até 27/11</small></div><a class="btn b1 buy" href="#">Quero o meu</a></div></div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
@@ -494,7 +499,7 @@ var _q=location.search||'';document.querySelectorAll('a.buy').forEach(function(a
 // ===== preço: lançamento até 27/11 23:59 (Brasília), depois R$ 87 =====
 var FIM=Date.UTC(2026,10,28,3,0,0);var lanc=Date.now()<FIM;var PRECO=lanc?47:87;
 if(!lanc){document.querySelectorAll('.vp').forEach(function(e){e.textContent='por R$ 87'});document.querySelectorAll('.vp2').forEach(function(e){e.textContent='R$ 87'});
- document.getElementById('vlp').textContent='87';document.querySelectorAll('.vpn').forEach(function(e){e.textContent='87'});document.getElementById('fxs').textContent='pagamento único · sem mensalidade';document.getElementById('tagp').textContent='PAGAMENTO ÚNICO';document.getElementById('dep').innerHTML='Ferramentas parecidas cobram cerca de <s>R$ 97 por mês</s>.';
+ document.getElementById('vlp').textContent='87';document.querySelectorAll('.vpn').forEach(function(e){e.textContent='87'});document.getElementById('fxs').textContent='pagamento único · ou em até 11x';document.getElementById('parc').innerHTML='ou em até <b>11x</b> no cartão';document.getElementById('tagp').textContent='PAGAMENTO ÚNICO';document.getElementById('dep').innerHTML='Ferramentas parecidas cobram cerca de <s>R$ 97 por mês</s>.';
  }
 fbq('track','ViewContent',{content_name:'Radar Local',content_category:'radar',value:PRECO,currency:'BRL'});
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.buy');if(a){fbq('track','InitiateCheckout',{content_name:'Radar Local',value:PRECO,currency:'BRL'})}},true);
@@ -536,7 +541,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
  var v=document.querySelector('.hvis');if(v&&matchMedia('(pointer:fine)').matches){v.addEventListener('mousemove',function(e){var r=v.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
   v.querySelectorAll('.ph1,.ph2,.demo').forEach(function(el,i){var k=[18,-14,10][i];el.style.marginLeft=(x*k)+'px';el.style.marginTop=(y*k)+'px'})})}})();
 // ===== botão fixo no celular só depois do topo =====
-(function(){var f=document.querySelector('.fixo');function v(){f.classList.toggle('on',scrollY>520)}addEventListener('scroll',v,{passive:true});v()})();
+(function(){var f=document.querySelector('.fixo'),t=document.getElementById('teste');function v(){var lim=t?t.offsetTop+t.offsetHeight-innerHeight*.4:520;f.classList.toggle('on',scrollY>lim)}addEventListener('scroll',v,{passive:true});v()})();
 // ===== animação de entrada =====
 var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}})},{threshold:.12});
 document.querySelectorAll('.rv').forEach(function(e){io.observe(e)});
@@ -633,6 +638,10 @@ function mostra(els,cx,R,lugar,orig){if(camada)mapa.removeLayer(camada);camada=L
   +'<a class="btn b1 buy" href="'+CHECKOUT+_q+'">'+(orig?'Achar '+orig.p+' em '+esc(lugar)+' · R$ '+PRECO:'Liberar os '+n+' no Radar · R$ '+PRECO)+'</a>'
   +'<p class="ft-nota">Teste feito com um mapa aberto (OpenStreetMap), que tem menos comércios cadastrados que o Google Maps.</p>'}
 function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+</script>
+<script>
+(function(){if(!matchMedia('(max-width:900px)').matches)return;var v=document.querySelector('.hero .hvis'),t=document.getElementById('teste');if(!v||!t)return;
+var s=document.createElement('section');s.className='mob-vis';var w=document.createElement('div');w.className='w';w.appendChild(v);s.appendChild(w);t.parentNode.insertBefore(s,t.nextSibling)})();
 </script>
 </body>
 </html>
