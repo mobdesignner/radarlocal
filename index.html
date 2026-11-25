@@ -302,10 +302,16 @@ fbq('init','2251055162476183');
 fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2251055162476183&ev=PageView&noscript=1" alt=""></noscript>
+<style id="mob-limpo">
+@media(max-width:760px){
+ .sec{padding:54px 0}.hero{padding-bottom:24px}
+ .hvis{height:550px}
+ .fx-in small{font-size:11px}
+}
+</style>
 </head>
 <body>
 
-<div class="fx" id="faixa">Preço de lançamento: <b>R$ 47</b> até sexta, 27/11. No sábado vai para R$ 87.</div>
 
 <header class="top"><div class="w">
   <a class="logo" href="#"><i><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="#cdf464" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5" stroke-opacity=".45"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l6-6"/><circle cx="12" cy="12" r="1.4" fill="#cdf464"/></svg></i><span>Radar <em>Local</em></span></a>
@@ -315,13 +321,10 @@ fbq('track','PageView');
 
 <section class="hero"><div class="w hg">
   <div>
-    <span class="pill"><i class="dot"></i>Novo: o site do cliente sai pronto em 1 clique</span>
     <h1>Encontre dezenas de clientes <span class="hl">com 1 clique.</span> Comece a vender hoje.</h1>
     <p class="lead">Você digita o ramo e a cidade. O Radar entrega a lista de cada <span class="rot"><span id="rotw">barbearia</span></span> que precisa de você, diz quem chamar primeiro, escreve a mensagem e gera o site pronto. <b>Sua parte é só fechar.</b></p>
     <div class="hbts"><a class="btn b1 buy" href="#">Quero meus clientes <span class="vp">por R$ 47</span> →</a><a class="btn b2" href="#teste">Ver quem está sem site</a></div>
     <p class="preco1"><b>R$ <span class="vpn">47</span> uma vez.</b> Sem pagar <s>R$ 97 todo mês</s> em ferramenta de prospecção.</p>
-    <p class="conta1"><i><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></i><span>Feche <b>1 site</b> (R$ 497) e o Radar já se pagou <b><span id="xv">10</span>x</b>.</span></p>
-    <div class="chips"><span>Sem mensalidade</span><span>Leads ilimitados</span><span>PC, Android e iPhone</span><span>Garantia de 7 dias</span></div>
   </div>
   <div class="hvis" aria-hidden="true">
     <div class="bg-r"><span class="an a1"></span><span class="an a2"></span><span class="an a3"></span><span class="cx"></span><span class="cy"></span><span class="sw2"></span></div>
@@ -491,8 +494,8 @@ var _q=location.search||'';document.querySelectorAll('a.buy').forEach(function(a
 // ===== preço: lançamento até 27/11 23:59 (Brasília), depois R$ 87 =====
 var FIM=Date.UTC(2026,10,28,3,0,0);var lanc=Date.now()<FIM;var PRECO=lanc?47:87;
 if(!lanc){document.querySelectorAll('.vp').forEach(function(e){e.textContent='por R$ 87'});document.querySelectorAll('.vp2').forEach(function(e){e.textContent='R$ 87'});
- document.getElementById('vlp').textContent='87';document.querySelectorAll('.vpn').forEach(function(e){e.textContent='87'});document.getElementById('xv').textContent='5';document.getElementById('fxs').textContent='pagamento único · sem mensalidade';document.getElementById('tagp').textContent='PAGAMENTO ÚNICO';document.getElementById('dep').innerHTML='Ferramentas parecidas cobram cerca de <s>R$ 97 por mês</s>.';
- var fx=document.getElementById('faixa');fx.innerHTML='Pagamento único de <b>R$ 87</b>. Sem mensalidade, seu pra sempre.'}
+ document.getElementById('vlp').textContent='87';document.querySelectorAll('.vpn').forEach(function(e){e.textContent='87'});document.getElementById('fxs').textContent='pagamento único · sem mensalidade';document.getElementById('tagp').textContent='PAGAMENTO ÚNICO';document.getElementById('dep').innerHTML='Ferramentas parecidas cobram cerca de <s>R$ 97 por mês</s>.';
+ }
 fbq('track','ViewContent',{content_name:'Radar Local',content_category:'radar',value:PRECO,currency:'BRL'});
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.buy');if(a){fbq('track','InitiateCheckout',{content_name:'Radar Local',value:PRECO,currency:'BRL'})}},true);
 // ===== contador próprio (sem dados pessoais) =====
