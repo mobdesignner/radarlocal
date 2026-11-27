@@ -321,7 +321,7 @@ fbq('track','PageView');
 .mob-vis{display:none}.bl .vp{margin-left:0}
 @media(max-width:900px){.mob-vis{display:block;padding:8px 0 30px;overflow:hidden}.mob-vis .hvis{order:0}}
 </style>
-</head>
+<style id="crono-css">.crono{margin:14px auto 6px;max-width:360px;padding:14px 16px;border-radius:16px;background:rgba(255,138,122,.08);border:1px solid rgba(255,138,122,.35);text-align:center}.crono>span{display:block;font-size:13px;font-weight:600;color:#ffb3a7;letter-spacing:.02em}.cr-n{display:flex;justify-content:center;align-items:baseline;gap:4px;margin:6px 0 4px;font-variant-numeric:tabular-nums}.cr-n b{font:700 34px "Space Grotesk",Inter,sans-serif;color:#fff;min-width:46px}.cr-n i{font-style:normal;font-size:13px;color:#a9afba;margin-right:8px}.crono small{color:#a9afba;font-size:12px}.fx-cr{color:#ffb3a7;font-weight:600;font-variant-numeric:tabular-nums}</style></head>
 <body>
 
 
@@ -455,6 +455,7 @@ fbq('track','PageView');
   <div style="text-align:center"><span class="eb">Preço</span><h2>Menos que 1 mês de mensalidade.<br><span class="hl">Seu pra sempre.</span></h2></div>
   <div class="pr rv">
     <span class="tag" id="tagp">LANÇAMENTO · ATÉ 27/11</span>
+    <div class="crono" id="crono" hidden><span>O preço de lançamento acaba em</span><div class="cr-n"><b id="crH">00</b><i>h</i><b id="crM">00</b><i>min</i><b id="crS">00</b><i>s</i></div><small>Hoje, 27/11, às 23:59. Depois: R$&nbsp;87.</small></div>
     <h3>Radar Local Completo</h3>
     <p class="de" id="dep">Ferramentas parecidas cobram cerca de <s>R$ 97 por mês</s>. Depois de 27/11: <s>R$ 87</s></p>
     <div class="vl"><small>R$</small><span id="vlp">47</span></div>
@@ -650,5 +651,7 @@ function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp
 (function(){if(!matchMedia('(max-width:900px)').matches)return;var v=document.querySelector('.hero .hvis'),t=document.getElementById('teste');if(!v||!t)return;
 var s=document.createElement('section');s.className='mob-vis';var w=document.createElement('div');w.className='w';w.appendChild(v);s.appendChild(w);t.parentNode.insertBefore(s,t.nextSibling)})();
 </script>
-</body>
+<script>(function(){var FIM=Date.UTC(2026,10,28,3,0,0),c=document.getElementById('crono'),fx=document.getElementById('fxs');if(!c||Date.now()>=FIM)return;c.hidden=false;
+function p(n){return (n<10?'0':'')+n}function t(){var d=FIM-Date.now();if(d<=0){c.hidden=true;location.reload();return}var h=Math.floor(d/36e5),m=Math.floor(d%36e5/6e4),s=Math.floor(d%6e4/1e3);
+document.getElementById('crH').textContent=p(h);document.getElementById('crM').textContent=p(m);document.getElementById('crS').textContent=p(s);if(fx)fx.innerHTML='ou 11x de R$ 5,24 · <span class="fx-cr">acaba em '+p(h)+':'+p(m)+':'+p(s)+'</span>'}t();setInterval(t,1000)})();</script></body>
 </html>
