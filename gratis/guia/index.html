@@ -144,7 +144,7 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
 // leva as UTMs (ou marca a origem do material) para a página do Radar
 var qs=location.search||'?utm_source=material&utm_campaign='+(document.body.dataset.mat||'gratis');document.querySelectorAll('a[data-radar]').forEach(function(a){var h=a.getAttribute('href'),i=h.indexOf('#');a.href=(i<0?h:h.slice(0,i))+qs+(i<0?'':h.slice(i))});})();</script>
 <script>
-var FIM=Date.UTC(2026,10,28,3,0,0);if(Date.now()>=FIM){document.getElementById('pv').textContent='R$ 87';document.getElementById('pt').textContent='pagamento único · ou em até 11x no cartão'}
+var FIM=Date.UTC(2026,10,28,3,0,0);if(Date.now()>=FIM){document.getElementById('pv').textContent='R$ 87';document.getElementById('pt').textContent='pagamento único · ou 12x de R$ 8,99 no cartão'}
 fbq('trackCustom','Material',{material:'guia'});
 document.querySelectorAll('.msg .cp').forEach(function(b){b.addEventListener('click',function(){var t=b.parentNode.querySelector('p').innerText;(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){b.textContent='Copiado ✓';setTimeout(function(){b.textContent='Copiar'},1800)}).catch(function(){});try{rlEv('copiou_msg')}catch(e){}})});
 </script></body></html>

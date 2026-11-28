@@ -507,7 +507,7 @@ var _q=location.search||'';document.querySelectorAll('a.buy').forEach(function(a
 // ===== preço: lançamento até 27/11 23:59 (Brasília), depois R$ 87 =====
 var FIM=Date.UTC(2026,10,28,3,0,0);var lanc=Date.now()<FIM;var PRECO=lanc?47:87;
 if(!lanc){document.querySelectorAll('.vp').forEach(function(e){e.textContent='por R$ 87'});document.querySelectorAll('.vp2').forEach(function(e){e.textContent='R$ 87'});
- document.getElementById('vlp').textContent='87';document.querySelectorAll('.vpn').forEach(function(e){e.textContent='87'});document.getElementById('fxs').textContent='pagamento único · ou em até 11x';document.getElementById('parc').innerHTML='ou em até <b>11x</b> no cartão';document.getElementById('tagp').textContent='PAGAMENTO ÚNICO';document.getElementById('dep').innerHTML='Ferramentas parecidas cobram cerca de <s>R$ 97 por mês</s>.';
+ document.getElementById('vlp').textContent='87';document.querySelectorAll('.vpn').forEach(function(e){e.textContent='87'});document.getElementById('fxs').textContent='pagamento único · ou 12x de R$ 8,99';document.getElementById('parc').innerHTML='ou <b>12x de R$ 8,99</b> no cartão';document.getElementById('tagp').textContent='PAGAMENTO ÚNICO';document.getElementById('dep').innerHTML='Ferramentas parecidas cobram cerca de <s>R$ 97 por mês</s>.';
  }
 fbq('track','ViewContent',{content_name:'Radar Local',content_category:'radar',value:PRECO,currency:'BRL'});
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.buy');if(a){fbq('track','InitiateCheckout',{content_name:'Radar Local',value:PRECO,currency:'BRL'})}},true);
