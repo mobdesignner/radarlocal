@@ -456,11 +456,11 @@ fbq('track','PageView');
 </div></section>
 
 <section class="sec alt" id="preco"><div class="w">
-  <div style="text-align:center"><span class="eb">Preço</span><h2>Escolha seu plano.<br><span class="hl">Em 2 meses o vitalício já se pagou.</span></h2></div>
+  <div style="text-align:center"><span class="eb">Preço</span><h2>Pague uma vez.<br><span class="hl">Seu pra sempre.</span></h2></div>
   <div class="pr rv">
     <span class="tag" id="tagp">LANÇAMENTO · ATÉ 27/11</span>
     <div class="crono" id="crono" hidden><span>O preço de lançamento acaba em</span><div class="cr-n"><b id="crH">00</b><i>h</i><b id="crM">00</b><i>min</i><b id="crS">00</b><i>s</i></div><small>Hoje, 27/11, às 23:59. Depois: R$&nbsp;87.</small></div>
-    <h3>Plano vitalício</h3>
+    <h3>Radar Local Completo</h3>
     <p class="de" id="dep">Ferramentas parecidas cobram cerca de <s>R$ 97 por mês</s>. Depois de 27/11: <s>R$ 87</s></p>
     <div class="vl"><small>R$</small><span id="vlp">47</span></div>
     <p class="parc" id="parc">ou <b>11x de R$ 5,24</b> no cartão</p>
@@ -476,18 +476,13 @@ fbq('track','PageView');
     <a class="btn b1 buy" href="#"><span class="bl">Quero o meu <span class="vp">por R$ 47</span></span> →</a>
     <p class="mini" style="text-align:center">Acesso liberado por e-mail logo após o pagamento.</p>
   </div>
-  <div class="pm rv">
-    <div class="pm-t"><b>Plano mensal</b><small>Tudo do Radar enquanto a assinatura estiver ativa. Cancele quando quiser.</small></div>
-    <div class="pm-v"><b>R$ 47</b><small>/mês</small></div>
-    <a class="btn bm buym" href="#">Assinar o mensal</a>
-  </div>
   <div class="gar"><i>7 dias</i><p><b>Garantia incondicional.</b> Testou e não gostou? Peça o dinheiro de volta em até 7 dias, sem justificativa.</p></div>
 </div></section>
 
 <section class="sec"><div class="w">
   <div style="text-align:center"><span class="eb">Perguntas frequentes</span><h2>Antes de você perguntar</h2></div>
   <div class="fq">
-    <details><summary>Tem mensalidade escondida?</summary><p>Não. No vitalício você paga uma vez e a licença é sua pra sempre, com as atualizações. Se preferir, tem o plano mensal de R$ 47: cobra todo mês no cartão ou Pix e você cancela quando quiser.</p></details>
+    <details><summary>Tem mensalidade escondida?</summary><p>Não. É pagamento único e a licença é sua pra sempre, com as atualizações.</p></details>
     <details><summary>Como funcionam os sites para os meus clientes?</summary><p>No Radar você abre o comércio e clica em gerar site. Ele monta um site institucional com os dados do Google e a estrutura do ramo. Você ajusta clicando nos textos e fotos e publica com 1 clique, com link próprio ou no domínio do cliente. O valor que você cobra pelo site é seu.</p></details>
     <details><summary>Preciso pagar algo a mais para publicar os sites?</summary><p>A publicação usa uma conta gratuita do Netlify, que você cria em 2 minutos. Domínio próprio (.com.br) é opcional e pago à parte pelo cliente.</p></details>
     <details><summary>Funciona no iPhone?</summary><p>Sim: o programa roda no PC e você acessa pelo celular (iPhone ou Android) por um link. Sem PC, o app funciona no Android.</p></details>
@@ -516,7 +511,7 @@ var _q=location.search||'';document.querySelectorAll('a.buy').forEach(function(a
 // ===== preço: lançamento até 27/11 23:59 (Brasília), depois R$ 87 =====
 var FIM=Date.UTC(2026,10,28,3,0,0);var lanc=Date.now()<FIM;var PRECO=lanc?47:87;
 if(!lanc){document.querySelectorAll('.vp').forEach(function(e){e.textContent='por R$ 87'});document.querySelectorAll('.vp2').forEach(function(e){e.textContent='R$ 87'});
- document.getElementById('vlp').textContent='87';document.querySelectorAll('.vpn').forEach(function(e){e.textContent='87'});document.getElementById('fxs').textContent='ou 12x de R$ 8,99';document.getElementById('parc').innerHTML='ou <b>12x de R$ 8,99</b> no cartão';document.getElementById('tagp').textContent='VITALÍCIO · MELHOR VALOR';document.getElementById('dep').innerHTML='<span class="anc"><i>12 meses no plano mensal</i><s>R$ 564</s></span><span class="anc2">No vitalício você paga uma vez:</span>';
+ document.getElementById('vlp').textContent='87';document.querySelectorAll('.vpn').forEach(function(e){e.textContent='87'});document.getElementById('fxs').textContent='ou 12x de R$ 8,99';document.getElementById('parc').innerHTML='ou <b>12x de R$ 8,99</b> no cartão';document.getElementById('tagp').textContent='PAGAMENTO ÚNICO · VITALÍCIO';document.getElementById('dep').innerHTML='Pague uma vez e use pra sempre, com as atualizações.';
  }
 fbq('track','ViewContent',{content_name:'Radar Local',content_category:'radar',value:PRECO,currency:'BRL'});
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a.buy');if(a){fbq('track','InitiateCheckout',{content_name:'Radar Local',value:PRECO,currency:'BRL'})}},true);
